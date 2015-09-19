@@ -1,7 +1,8 @@
 #include <GL\glew.h>
-#include <SDL2\SDL.h>
+#include <cstdlib>
 
-int main(int argc, char** argv)
+
+int main()
 {
 	system("pause");
 	return 0;
