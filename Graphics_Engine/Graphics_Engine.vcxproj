@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Engine.cpp" />
-    <ClCompile Include="source\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Engine.h" />
