@@ -1,3 +1,4 @@
+// Laatija: Niko Kinnunen
 #ifndef ENGINE_H
 #define ENGINE_H
 #include <GL\glew.h>

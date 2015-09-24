@@ -4,9 +4,9 @@
 
 int main(int argc, char** argv)
 {
-	/*Engine demo;
+	Engine demo;
 
-	demo.run();*/
+	demo.run();
 
 	system("pause");
 	return 0;

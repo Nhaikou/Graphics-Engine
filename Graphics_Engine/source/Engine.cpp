@@ -1,3 +1,4 @@
+// Laatija: Niko Kinnunen
 #include "Engine.h"
 #include <cassert>
 #include <Windows.h>
