@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Engine.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D1D237F9-1ED8-4BAF-92F7-62D5F4973BF5}</ProjectGuid>
@@ -53,7 +57,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\3rdparty\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -65,6 +69,9 @@
       <Command>XCOPY "$(MSBuildProjectDirectory)\3rdparty\binary\*.dll" "$(TargetDir)" /D /K /Y
 </Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -74,7 +81,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\3rdparty\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -88,6 +95,9 @@
       <Command>XCOPY "$(MSBuildProjectDirectory)\3rdparty\binary\*.dll" "$(TargetDir)" /D /K /Y
 </Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
