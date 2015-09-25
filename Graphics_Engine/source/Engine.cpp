@@ -48,8 +48,6 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMinor);
 	std::cout << "OpenGL context version: " << versionMajor << ", " << versionMinor << std::endl;
-
-
 }
 
 void Engine::run()
@@ -60,8 +58,49 @@ void Engine::run()
 	
 	while (running)
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		// Tyhjää ikkunan
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		SDL_GL_SwapWindow(window);
+
+
+		//Laatija: Ville Koskinen//
+
+		GLuint VertexArrayID;
+		glGenVertexArrays(1, &VertexArrayID);
+		glBindVertexArray(VertexArrayID);
+
+		// Kolme vektoria
+		static const GLfloat g_vertex_buffer_data[] =
+		{
+			-1.0f, -1.0f, 0.0f,
+			1.0f, -1.0f, 0.0f,
+			0.0f, 1.0f, 0.0f,
+		};
+
+		// Tunnistaa / nimeää vertexbufferin
+		GLuint vertexBuffer;
+		// Tekee yhden bufferin
+		glGenBuffers(1, &vertexBuffer);
+		// Seuraava komento tajuaa että puhutaan bufferista
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+		// Antaa vertices OpenGL:lle
+		glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+		// Attribuuttibufferi
+		glEnableVertexAttribArray(0);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+		glVertexAttribPointer(
+				0,			// attribuutti 0
+				3,			// koko
+				GL_FLOAT,	// tyyppi
+				GL_FALSE,	// normalisoitu?
+				0,			// stride
+				(void*)0	// array buffer offsetti
+			);
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDisableVertexAttribArray(0);
+		///////////////////////////////
 
 		while (SDL_PollEvent(&event) == 1)
 		{
