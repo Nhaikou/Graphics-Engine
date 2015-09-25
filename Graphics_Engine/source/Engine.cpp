@@ -69,19 +69,26 @@ void Engine::run()
 		glGenVertexArrays(1, &VertexArrayID);
 		glBindVertexArray(VertexArrayID);
 
-		// Kolme vektoria
+		// Kolmion vektorit
 		static const GLfloat g_vertex_buffer_data[] =
 		{
-			-1.0f, -1.0f, 0.0f,
-			1.0f, -1.0f, 0.0f,
-			0.0f, 1.0f, 0.0f,
+		   -0.5f,	-0.5f,	0.0f,
+			0.5f,	-0.5f,	0.0f,
+			0.0f,	 0.5f,	0.0f,
 		};
+
+		// K‰‰nt‰‰ m‰‰ritetty‰ akselia 30ms j‰lkeen
+		SDL_Delay(30);
+		// Akselin k‰‰ntˆkulma
+		float _angle = 2.0f;
+		// K‰‰nnett‰v‰ akseli ( X, Y, Z )
+		glRotatef(_angle, 0.0f, 0.0f, 0.5f);
 
 		// Tunnistaa / nime‰‰ vertexbufferin
 		GLuint vertexBuffer;
 		// Tekee yhden bufferin
 		glGenBuffers(1, &vertexBuffer);
-		// Seuraava komento tajuaa ett‰ puhutaan bufferista
+		// Seuraava komento "tajuaa" ett‰ puhutaan bufferista
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 		// Antaa vertices OpenGL:lle
 		glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
@@ -100,6 +107,9 @@ void Engine::run()
 
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glDisableVertexAttribArray(0);
+
+		SDL_Delay(30);
+		glClear(GL_ARRAY_BUFFER);
 		///////////////////////////////
 
 		while (SDL_PollEvent(&event) == 1)
