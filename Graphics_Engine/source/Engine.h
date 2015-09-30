@@ -5,7 +5,6 @@
 #include <SDL2\SDL.h>
 #include <iostream>
 
-
 class Engine
 {
 public:

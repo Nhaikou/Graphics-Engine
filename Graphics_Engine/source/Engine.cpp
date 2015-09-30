@@ -55,13 +55,12 @@ void Engine::run()
 	initialize();
 	SDL_Event event;
 	running = true;
-	
+
 	while (running)
 	{
 		// Tyhj‰‰ ikkunan
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		SDL_GL_SwapWindow(window);
-
 
 		//Laatija: Ville Koskinen//
 
@@ -72,9 +71,9 @@ void Engine::run()
 		// Kolmion vektorit
 		static const GLfloat g_vertex_buffer_data[] =
 		{
-		   -0.5f,	-0.5f,	0.0f,
-			0.5f,	-0.5f,	0.0f,
-			0.0f,	 0.5f,	0.0f,
+			-0.5f, -0.5f, 0.0f,
+			0.5f, -0.5f, 0.0f,
+			0.0f, 0.5f, 0.0f,
 		};
 
 		// K‰‰nt‰‰ m‰‰ritetty‰ akselia 30ms j‰lkeen
@@ -97,12 +96,12 @@ void Engine::run()
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 		glVertexAttribPointer(
-				0,			// attribuutti 0
-				3,			// koko
-				GL_FLOAT,	// tyyppi
-				GL_FALSE,	// normalisoitu?
-				0,			// stride
-				(void*)0	// array buffer offsetti
+			0,			// attribuutti 0
+			3,			// koko
+			GL_FLOAT,	// tyyppi
+			GL_FALSE,	// normalisoitu?
+			0,			// stride
+			(void*)0	// array buffer offsetti
 			);
 
 		glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -111,6 +110,8 @@ void Engine::run()
 		SDL_Delay(30);
 		glClear(GL_ARRAY_BUFFER);
 		///////////////////////////////
+
+		
 
 		while (SDL_PollEvent(&event) == 1)
 		{
