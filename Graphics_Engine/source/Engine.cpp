@@ -3,7 +3,7 @@
 #include <cassert>
 #include <Windows.h>
 
-Engine::Engine() : running(false), window(nullptr), Window_Width(0), Window_Height(0)
+Engine::Engine() : isRunning(false), window(nullptr), Window_Width(0), Window_Height(0)
 {
 }
 
@@ -54,9 +54,9 @@ void Engine::run()
 {
 	initialize();
 	SDL_Event event;
-	running = true;
+	isRunning = true;
 
-	while (running)
+	while (isRunning)
 	{
 		// Tyhj‰‰ ikkunan
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -116,7 +116,7 @@ void Engine::run()
 		while (SDL_PollEvent(&event) == 1)
 		{
 			if (event.type == SDL_QUIT)
-				running = false;
+				isRunning = false;
 		}
 
 	}

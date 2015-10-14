@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\Renderer.cpp" />
-    <ClCompile Include="source\Shader.cpp" />
+    <ClCompile Include="source\Texture.cpp" />
+    <ClCompile Include="source\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Engine.h" />
     <ClInclude Include="source\Renderer.h" />
-    <ClInclude Include="source\Shaders.h" />
+    <ClInclude Include="source\Texture.h" />
+    <ClInclude Include="source\TextureManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D1D237F9-1ED8-4BAF-92F7-62D5F4973BF5}</ProjectGuid>

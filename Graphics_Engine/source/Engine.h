@@ -4,7 +4,8 @@
 #include <GL\glew.h>
 #include <SDL2\SDL.h>
 #include <iostream>
-
+#include <list>
+#include <string>
 class Engine
 {
 public:
@@ -26,7 +27,7 @@ private:
 	SDL_Window* window;
 	SDL_GLContext context;
 
-	bool running;
+	bool isRunning;
 
 	int Window_Width;
 	int Window_Height;
