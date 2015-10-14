@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Effect.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\Renderer.cpp" />
     <ClCompile Include="source\Texture.cpp" />
     <ClCompile Include="source\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Effect.h" />
     <ClInclude Include="source\Engine.h" />
     <ClInclude Include="source\Renderer.h" />
     <ClInclude Include="source\Texture.h" />

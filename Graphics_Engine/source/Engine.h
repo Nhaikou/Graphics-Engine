@@ -6,6 +6,9 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 class Engine
 {
 public:

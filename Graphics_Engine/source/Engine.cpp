@@ -1,5 +1,6 @@
 // Laatija: Niko Kinnunen
 #include "Engine.h"
+#include "Effect.h"
 #include <cassert>
 #include <Windows.h>
 
