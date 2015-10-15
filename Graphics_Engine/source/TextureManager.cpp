@@ -3,8 +3,20 @@
 
 TextureManager::TextureManager()
 {
+
 }
+
+Texture* TextureManager::load(std::string assetPath)
+{
+	if (isLoaded(assetPath))
+	{
+
+	}
+}
+
+
 
 TextureManager::~TextureManager()
 {
+
 }
