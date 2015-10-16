@@ -15,7 +15,7 @@ public:
 	
 	Texture* load(std::string textures);
 
-	void unload(const std::string& textures);
+	void unLoad(const std::string& textures);
 	void unLoadEverything();
 
 private:

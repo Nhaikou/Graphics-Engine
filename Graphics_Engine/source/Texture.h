@@ -10,15 +10,17 @@ class Texture
 public:
 	Texture();
 	~Texture();
-	Texture(GLuint, int, int);
+	Texture(GLuint id, size_t w, size_t h);
 	
-	GLuint getId();
+	const GLuint& getId() const;
 
 	int getWidth();
 	int getHeight();
 
+	bool readFromFile(const std::string& assetPath);
+
 private:
-	int width, height;
+	size_t width, height;
 	GLuint id;
 };
 #endif;
