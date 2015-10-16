@@ -10,7 +10,7 @@ class Texture
 public:
 	Texture();
 	~Texture();
-	Texture(GLuint id, size_t w, size_t h);
+	Texture(size_t w, size_t h);
 	
 	const GLuint& getId() const;
 

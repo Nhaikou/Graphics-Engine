@@ -47,7 +47,7 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	int versionMajor;
 	int versionMinor;
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
-	glGetIntegerv(GL_MAJOR_VERSION, &versionMinor);
+	glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
 	std::cout << "OpenGL context version: " << versionMajor << ", " << versionMinor << std::endl;
 }
 

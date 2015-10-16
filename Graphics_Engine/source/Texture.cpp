@@ -7,7 +7,7 @@ Texture::Texture() : width(0), height(0)
 
 }
 
-Texture::Texture(GLuint id, size_t w, size_t h) : id(id), width(w), height(h)
+Texture::Texture(size_t w, size_t h) : id(0), width(w), height(h)
 {
 
 }
@@ -15,7 +15,6 @@ Texture::Texture(GLuint id, size_t w, size_t h) : id(id), width(w), height(h)
 // käytämme ainoastaan .PNG tiedostoja kuvien lataamiseen
 bool Texture::readFromFile(const std::string& path)
 {
-
 	std::string fullpath;
 	std::vector<unsigned char> png, pixels;
 

@@ -10,16 +10,17 @@
 class TextureManager
 {
 public:
-	TextureManager();
+	TextureManager(const std::string& fileRootDirectory);
 	~TextureManager();
 	
-	Texture* load(std::string textures);
+	Texture* load(std::string texture, size_t w, size_t h);
 
-	void unLoad(const std::string& textures);
+	void unLoad(const std::string& texture);
 	void unLoadEverything();
 
 private:
+	std::string fileRoot;
 	std::map<std::string, Texture*> textures;
-	bool isLoaded(std::string& textures) const;
+	bool isLoaded(std::string& texture) const;
 };
 #endif;
