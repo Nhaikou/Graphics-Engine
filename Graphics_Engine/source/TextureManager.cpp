@@ -15,7 +15,7 @@ TextureManager::TextureManager(const std::string& fileRootDirectory = "../sample
 // Ladataan tekstuurit tiedostosta.
 Texture* TextureManager::load(std::string assetPath, size_t w, size_t h)
 {
-	if (isLoaded(assetPath))
+	if (!isLoaded(assetPath))
 	{
 		std::string path = fileRoot + "\\" + assetPath;
 

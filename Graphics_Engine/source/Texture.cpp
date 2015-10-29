@@ -15,10 +15,9 @@ Texture::Texture(size_t w, size_t h) : id(0), width(w), height(h)
 // k‰yt‰mme ainoastaan .PNG tiedostoja kuvien lataamiseen
 bool Texture::readFromFile(const std::string& path)
 {
-	std::string fullpath;
 	std::vector<unsigned char> png, pixels;
 
-	lodepng::load_file(png, fullpath);
+	lodepng::load_file(png, path);
 
 
 	size_t error = lodepng::decode(pixels, width, height, png.data(), png.size());
@@ -40,7 +39,7 @@ bool Texture::readFromFile(const std::string& path)
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
 
 
-	// asetetaan GL_NEAREST suodatus p‰‰lle
+	//
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	
