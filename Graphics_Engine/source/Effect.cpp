@@ -11,8 +11,12 @@ Effect::Effect()
 bool Effect::loadShader(std::string sFile, int a_iType)
 {
 	FILE* fp = fopen(sFile.c_str(), "rt");
-	if (!fp)return false;
+	if (!fp)
+	{
+		return false;
+	}
 
+	int i = 0;
 
 	std::vector<std::string> sLines;
 	char sLine[255];
@@ -20,7 +24,10 @@ bool Effect::loadShader(std::string sFile, int a_iType)
 	fclose(fp);
 
 	const char** sProgram = new const char*[ESZ(sLines)];
-	for (int i , ESZ(sLines))sProgram[i] = sLines[i].c_str();
+	for (i, ESZ(sLines); i++;)
+	{
+		sProgram[i] = sLines[i].c_str();
+	}
 
 	uiShader = glCreateShader(a_iType);
 
@@ -51,7 +58,11 @@ unsigned int Effect::getShaderID()
 
 void Effect::deleteShader()
 {
-	if (!isLoaded()) return;
+	if (!isLoaded())
+	{
+		return;
+	}
+
 	bLoaded = false;
 	glDeleteShader(uiShader);
 }
@@ -68,4 +79,32 @@ void EffectProgram::createProgram()
 	uiProgram = glCreateProgram();
 }
 
-bool EffectProgram
+bool EffectProgram::addShader(Effect* shShader)
+{
+	if (!shShader->isLoaded())
+	{
+		return false;
+	}
+
+	glAttachShader(uiProgram, shShader->getShaderID());
+	return true;
+}
+
+void EffectProgram::deleteProgram()
+{
+	if (!bLinked)
+	{
+		return;
+	}
+
+	bLinked = false;
+	glDeleteProgram(uiProgram);
+}
+
+void EffectProgram::useProgram()
+{
+	if (bLinked)
+	{
+		glUseProgram(uiProgram);
+	}
+}
