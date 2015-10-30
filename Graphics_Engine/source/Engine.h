@@ -4,12 +4,14 @@
 #include <GL\glew.h>
 #include <SDL2\SDL.h>
 #include <iostream>
+#include <fstream>
 #include <list>
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <vector>
+#include <algorithm>
 
 class Engine
 {
