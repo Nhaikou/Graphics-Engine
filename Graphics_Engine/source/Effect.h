@@ -1,43 +1,67 @@
-//// Laatija: Ville Koskinen //
-//#ifndef EFFECT_H
-//#define EFFECT_H
-//
-//#include "Engine.h"
-//
-//class Effect
-//{
-//public:
-//	Effect();
-//	~Effect();
-//
-//	//Luo linkitett‰v‰n programmin
-//	GLuint program;
-//
-//	//Linkitt‰‰ kyseisen programmin
-//	GLuint getProgram();
-//
-//	//Lataa tekstuurin
-//	void load(std::string);
-//	
-//	//Tarkistaa onko tekstuuri ladattu
-//	bool isLoaded();
-//};
-//
-////static void show_info_log(
-////	GLuint object,
-////	PFNGLGETSHADERIVPROC glGet__iv,
-////	PFNGLGETSHADERINFOLOGPROC glGet__InfoLog)
-////{
-////	GLint log_length;
-////	char *log;
-////
-////	glGet__iv(object, GL_INFO_LOG_LENGTH, &log_length);
-////	log = malloc(log_length);
-////	glGet__InfoLog(object, log_length, NULL, log);
-////	std::cout << stderr << " / " << log << std::endl;
-////	free(log);
-////}
-//
+// Laatija: Ville Koskinen //
+
+#ifndef EFFECT_H
+#define EFFECT_H
+
+#include "Engine.h"
+#define ESZ(elem) (int)elem.size()
+
+
+class Effect
+{
+public:
+	// P‰‰konstruktori
+	Effect();
+
+	// Lataa shaderin ja tuhoaa sen
+	bool loadShader(std::string sFile, int a_iType);
+	void deleteShader();
+
+	// Tarkistaa onko shaderi ladattu
+	bool isLoaded();
+
+	// Nappaa shaderin ID:n
+	unsigned int getShaderID();
+
+
+private:
+	unsigned int uiShader;	// Shaderin ID
+	int iType;				// GL_VERTEX_SHADER, GL_FRAGMENT_SHADER...
+	bool bLoaded;			// Tarkistaa onko shaderi ladattu ja kompilattu
+};
+
+
+class EffectProgram
+{
+public:
+	// P‰‰konstruktori
+	EffectProgram();
+
+	// Luo ja tuhoaa programin
+	void createProgram();
+	void deleteProgram();
+
+	// Lis‰‰ shaderin
+	bool addShader(Effect* shShader);
+
+	// Linkitt‰‰ programin
+	bool linkProgram();
+
+	// Use program. Mit‰h‰n se voisi tehd‰. Osaatko arvata?
+	void useProgram();
+
+	// Nappaa programin ID:n
+	unsigned int getProgramID();
+	
+
+protected:
+	unsigned int uiProgram;	// Program ID
+	bool bLinked;			// Onko program linkitetty?
+};
+
+
+//Vanhaa koodia, ignoraa
+
 //static struct
 //{
 //	GLuint vertex_shader, fragment_shader, program;
@@ -137,4 +161,4 @@
 //	g_resources
 //
 //}
-//#endif
+#endif
