@@ -4,6 +4,7 @@
 #include <cassert>
 #include <Windows.h>
 
+
 Engine::Engine() : isRunning(false), window(nullptr), Window_Width(0), Window_Height(0)
 {
 }
@@ -13,8 +14,8 @@ Engine::~Engine()
 	SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-
 }
+
 
 void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 {
@@ -52,6 +53,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 
 }
 
+
+
 void Engine::run()
 {
 	initialize();
@@ -66,51 +69,51 @@ void Engine::run()
 
 		//Laatija: Ville Koskinen//
 
-		GLuint VertexArrayID;
-		glGenVertexArrays(1, &VertexArrayID);
-		glBindVertexArray(VertexArrayID);
+		//GLuint VertexArrayID;
+		//glGenVertexArrays(1, &VertexArrayID);
+		//glBindVertexArray(VertexArrayID);
 
-		// Kolmion vektorit
-		static const GLfloat g_vertex_buffer_data[] =
-		{
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f,
-		};
+		//// Kolmion vektorit
+		//static const GLfloat g_vertex_buffer_data[] =
+		//{
+		//	-0.5f, -0.5f, 0.0f,
+		//	0.5f, -0.5f, 0.0f,
+		//	0.0f, 0.5f, 0.0f,
+		//};
 
-		// K‰‰nt‰‰ m‰‰ritetty‰ akselia 30ms j‰lkeen
-		SDL_Delay(30);
-		// Akselin k‰‰ntˆkulma
-		float _angle = 2.0f;
-		// K‰‰nnett‰v‰ akseli ( X, Y, Z )
-		glRotatef(_angle, 0.0f, 0.0f, 0.5f);
+		//// K‰‰nt‰‰ m‰‰ritetty‰ akselia 30ms j‰lkeen
+		//SDL_Delay(30);
+		//// Akselin k‰‰ntˆkulma
+		//float _angle = 2.0f;
+		//// K‰‰nnett‰v‰ akseli ( X, Y, Z )
+		//glRotatef(_angle, 0.0f, 0.0f, 0.5f);
 
-		// Tunnistaa / nime‰‰ vertexbufferin
-		GLuint vertexBuffer;
-		// Tekee yhden bufferin
-		glGenBuffers(1, &vertexBuffer);
-		// Seuraava komento "tajuaa" ett‰ puhutaan bufferista
-		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-		// Antaa vertices OpenGL:lle
-		glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+		//// Tunnistaa / nime‰‰ vertexbufferin
+		//GLuint vertexBuffer;
+		//// Tekee yhden bufferin
+		//glGenBuffers(1, &vertexBuffer);
+		//// Seuraava komento "tajuaa" ett‰ puhutaan bufferista
+		//glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+		//// Antaa vertices OpenGL:lle
+		//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 
-		// Attribuuttibufferi
-		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-		glVertexAttribPointer(
-			0,			// attribuutti 0
-			3,			// koko
-			GL_FLOAT,	// tyyppi
-			GL_FALSE,	// normalisoitu?
-			0,			// stride
-			(void*)0	// array buffer offsetti
-			);
+		//// Attribuuttibufferi
+		//glEnableVertexAttribArray(0);
+		//glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+		//glVertexAttribPointer(
+		//	0,			// attribuutti 0
+		//	3,			// koko
+		//	GL_FLOAT,	// tyyppi
+		//	GL_FALSE,	// normalisoitu?
+		//	0,			// stride
+		//	(void*)0	// array buffer offsetti
+		//	);
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDisableVertexAttribArray(0);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDisableVertexAttribArray(0);
 
-		SDL_Delay(30);
-		glClear(GL_ARRAY_BUFFER);
+		//SDL_Delay(30);
+		//glClear(GL_ARRAY_BUFFER);
 		///////////////////////////////
 
 		
