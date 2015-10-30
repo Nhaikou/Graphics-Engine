@@ -3,7 +3,7 @@
 #include "Effect.h"
 #include <cassert>
 #include <Windows.h>
-
+#include "Texture.h"
 
 Engine::Engine() : isRunning(false), window(nullptr), Window_Width(0), Window_Height(0)
 {
@@ -51,6 +51,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
 	std::cout << "OpenGL context version: " << versionMajor << ", " << versionMinor << std::endl;
 
+	std::cout << std::endl;
+	
 }
 
 
@@ -60,6 +62,10 @@ void Engine::run()
 	initialize();
 	SDL_Event event;
 	isRunning = true;
+
+	Texture texture;
+
+	texture.readFromFile("../Graphics_Engine/nhaikou.png");
 
 	while (isRunning)
 	{

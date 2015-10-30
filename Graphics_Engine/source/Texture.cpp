@@ -19,7 +19,6 @@ bool Texture::readFromFile(const std::string& path)
 
 	lodepng::load_file(png, path);
 
-
 	size_t error = lodepng::decode(pixels, width, height, png.data(), png.size());
 	
 	// jos tiedostoa ei löydy

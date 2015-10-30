@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp" />
     <ClCompile Include="source\Effect.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\Renderer.cpp" />
