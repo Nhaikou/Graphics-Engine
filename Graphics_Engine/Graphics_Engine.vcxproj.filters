@@ -33,7 +33,7 @@
     <ClCompile Include="source\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\FreeType.cpp">
+    <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,9 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\FreeType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

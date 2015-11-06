@@ -1,4 +1,4 @@
-//Laatija: Juuso Martikainen
+//////Laatija: Juuso Martikainen
 //
 //#ifndef FREE_TYPE_H
 //#define FREE_TYPE_H
