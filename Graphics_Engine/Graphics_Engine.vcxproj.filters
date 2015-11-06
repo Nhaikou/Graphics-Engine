@@ -1,80 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-<<<<<<< Updated upstream
     <ClCompile Include="source\Effect.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\Engine.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\FreeType.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\Renderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\Sprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\Texture.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="source\TextureManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\TextureManager.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
     <ClInclude Include="source\Effect.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="source\Engine.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="source\FreeType.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="source\Renderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="source\Sprite.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="source\Texture.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="source\TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-=======
-    <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp" />
-    <ClCompile Include="source\Effect.cpp" />
-    <ClCompile Include="source\Engine.cpp" />
-    <ClCompile Include="source\FreeType.cpp" />
-    <ClCompile Include="source\Renderer.cpp" />
-    <ClCompile Include="source\Sprite.cpp" />
-    <ClCompile Include="source\Texture.cpp" />
-    <ClCompile Include="source\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Effect.h" />
-    <ClInclude Include="source\Engine.h" />
-    <ClInclude Include="source\FreeType.h" />
-    <ClInclude Include="source\Renderer.h" />
-    <ClInclude Include="source\Sprite.h" />
-    <ClInclude Include="source\Texture.h" />
-    <ClInclude Include="source\TextureManager.h" />
->>>>>>> Stashed changes
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{84ffd726-1f74-42a6-b3bc-098101fe21c1}</UniqueIdentifier>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{d6aff5b2-2330-4931-b0bb-dcb220e70fc7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{89d8e7ed-667e-4419-966b-46a0101b6a70}</UniqueIdentifier>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{63d372b1-97de-4783-b89c-e53a71747981}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
