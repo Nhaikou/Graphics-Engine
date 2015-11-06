@@ -29,6 +29,9 @@ public:
 
 	// Alustetaan SDL ja OpenGL
 	void initialize(int Window_Width, int Window_Height);
+
+	//Piirtokomento
+	void draw();
 	
 private:
 	SDL_Window* window;

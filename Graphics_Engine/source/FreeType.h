@@ -1,12 +1,11 @@
-//////Laatija: Juuso Martikainen
-//
+////////Laatija: Juuso Martikainen
+////
 //#ifndef FREE_TYPE_H
 //#define FREE_TYPE_H
 ////FreeType
 //
 //#include <ft2build.h>
 //#include FT_FREETYPE_H
-//#include <freetype\freetype.h>
 //#include <freetype\ftglyph.h>
 //#include <freetype\ftoutln.h>
 //#include <freetype\fttrigon.h>
@@ -29,10 +28,10 @@
 //	GLuint listBase;
 //public:
 //
-//	
-//
+////	Init functio luo fontin korkeudella Height tiedostosta fname.
+////
 //	void init(const char *fname, unsigned int Height);
-//
+////Vapauttaa kaikki resurssit jotka ovat fonteissa
 //	void clean();
 //
 //	void print(const fontData &ftFont, float x, float y, const char *fmt, ...);

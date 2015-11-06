@@ -1,4 +1,4 @@
-//Laatija: Juuso Martikainen
+////Laatija: Juuso Martikainen
 //
 //#include "FreeType.h"
 //
@@ -95,9 +95,8 @@
 //		if (FT_New_Face(library, fname, 0, &face))
 //			throw std::runtime_error("FT_New_Face failed (probaply problems whit font file!");
 //
-//	/*	FT_Set_Char_size(face, Height << 6, Height << 6, 96, 96);
-//*/
-//
+//		FT_Set_Char_Size(face, Height << 6, Height << 6, 96, 96);
+//		
 //		listBase = glGenLists(128);
 //		glGenTextures(128, textures);
 //
@@ -106,7 +105,8 @@
 //
 //		FT_Done_Face(face);
 //
-//		/*FT_Done_Freetype(library);*/
+//		
+//		FT_Done_FreeType(library);
 //	}
 //
 //	void fontData::clean()
@@ -117,7 +117,7 @@
 //	}
 //
 //
-//	inline void psuhScreenCoordinateMatrix()
+//	inline void pushScreenCoordinateMatrix()
 //	{
 //		glPushAttrib(GL_TRANSFORM_BIT);
 //		GLint viewport[4];
@@ -139,15 +139,16 @@
 //
 //	void fontData::print(const fontData &ftFont, float x, float y, const char *fmt, ...)
 //	{
-//		/*pushScreenCoordinateMatrix();*/
+//		pushScreenCoordinateMatrix();
+//		
 //
-//		/*GLuint font = ft_font.list_base;*/
+//		GLuint font = ftFont.listBase;
 //
-//		float h = ft_font.h / .63f;
+//		float h = ftFont.Height / .63f;
 //		char text[256];
 //		va_list ap;
 //
-//		if (fmt == NULL)
+//		if (fmt == NULL)						//Jos ei ole tekstiä niin sitä ei tarvitse tehdä
 //			*text = 0;
 //		else
 //		{
@@ -160,19 +161,20 @@
 //		std::vector<std::string>lines;
 //		for (const char *c = text; *c; c++)
 //		{
-//			/*if (const char *c == '\n')
+//			if (*c == '\n')
 //			{
 //				std::string line;
 //				for (const char *n = start_line; n < c; n++) line.append(1, *n);
 //				lines.push_back(line);
 //				start_line = c + 1;
-//			}*/
-//		}
-//		if (start_line)
-//		{
-//			std::string line;
-//			for (const char *n = start_line; n < c; n++);
-//			lines.push_back(line);
+//			}
+//
+//			if (start_line)
+//			{
+//				std::string line;
+//				for (const char *n = start_line; n < c; n++);
+//				lines.push_back(line);
+//			}
 //		}
 //		glPushAttrib(GL_LIST_BIT | GL_CURRENT_BIT | GL_ENABLE_BIT | GL_TRANSFORM_BIT);
 //		glMatrixMode(GL_MODELVIEW);
@@ -206,4 +208,3 @@
 //		pop_projection_matrix();
 //
 //	}
-//
