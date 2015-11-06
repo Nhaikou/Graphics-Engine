@@ -30,22 +30,22 @@ glm::vec4 Sprite::getColor()
 
 void Sprite::setPosition(glm::vec2 pos)
 {
-	this->position*(pos);
+	this->position=(pos);
 }
 
 void Sprite::setScale(glm::vec2 scale)
 {
-	this->scale*(scale);
+	this->scale=(scale);
 }
 
 void Sprite::setRotation(float rot)
 {
-	this->rotation*(rot);
+	this->rotation=(rot);
 }
 
 void Sprite::setColor(glm::vec4 color)
 {
-	this->color*(color);
+	this->color=(color);
 }
 
 Sprite::~Sprite()
