@@ -1,7 +1,6 @@
 //Laatija: Juuso Martikainen
-
-//#include "FreeType.h"
 //
+//#include "FreeType.h"
 //
 //
 //	inline int nextP2(int a)
@@ -96,8 +95,8 @@
 //		if (FT_New_Face(library, fname, 0, &face))
 //			throw std::runtime_error("FT_New_Face failed (probaply problems whit font file!");
 //
-//		FT_Set_Char_size(face, Height << 6, Height << 6, 96, 96);
-//
+//	/*	FT_Set_Char_size(face, Height << 6, Height << 6, 96, 96);
+//*/
 //
 //		listBase = glGenLists(128);
 //		glGenTextures(128, textures);
@@ -107,7 +106,7 @@
 //
 //		FT_Done_Face(face);
 //
-//		FT_Done_Freetype(library);
+//		/*FT_Done_Freetype(library);*/
 //	}
 //
 //	void fontData::clean()
@@ -138,11 +137,11 @@
 //		glPopAttrib();
 //	}
 //
-//	void print(const fontData &ftFont, float x, float y, const char *fmt, ...)
+//	void fontData::print(const fontData &ftFont, float x, float y, const char *fmt, ...)
 //	{
-//		pushScreenCoordinateMatrix();
+//		/*pushScreenCoordinateMatrix();*/
 //
-//		GLuint font = ft_font.list_base;
+//		/*GLuint font = ft_font.list_base;*/
 //
 //		float h = ft_font.h / .63f;
 //		char text[256];
@@ -161,13 +160,13 @@
 //		std::vector<std::string>lines;
 //		for (const char *c = text; *c; c++)
 //		{
-//			if (const char *c == '\n')
+//			/*if (const char *c == '\n')
 //			{
 //				std::string line;
 //				for (const char *n = start_line; n < c; n++) line.append(1, *n);
 //				lines.push_back(line);
 //				start_line = c + 1;
-//			}
+//			}*/
 //		}
 //		if (start_line)
 //		{

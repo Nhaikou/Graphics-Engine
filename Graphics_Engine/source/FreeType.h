@@ -3,11 +3,13 @@
 //#ifndef FREE_TYPE_H
 //#define FREE_TYPE_H
 ////FreeType
-//#include <FreeType\ft2build.h>
-//#include <FreeType\freetype\freetype.h>
-//#include <FreeType\freetype\ftglyph.h>
-//#include <FreeType\freetype\ftoutln.h>
-//#include <FreeType\freetype\fttrigon.h>
+//
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
+//#include <freetype\freetype.h>
+//#include <freetype\ftglyph.h>
+//#include <freetype\ftoutln.h>
+//#include <freetype\fttrigon.h>
 //
 ////openGl
 //#include <Windows.h>
@@ -27,7 +29,7 @@
 //	GLuint listBase;
 //public:
 //
-//
+//	
 //
 //	void init(const char *fname, unsigned int Height);
 //
