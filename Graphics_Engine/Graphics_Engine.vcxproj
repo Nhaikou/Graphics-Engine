@@ -14,6 +14,7 @@
     <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp" />
     <ClCompile Include="source\Effect.cpp" />
     <ClCompile Include="source\Engine.cpp" />
+    <ClCompile Include="source\FreeType.cpp" />
     <ClCompile Include="source\Renderer.cpp" />
     <ClCompile Include="source\Sprite.cpp" />
     <ClCompile Include="source\Texture.cpp" />
@@ -22,6 +23,7 @@
   <ItemGroup>
     <ClInclude Include="source\Effect.h" />
     <ClInclude Include="source\Engine.h" />
+    <ClInclude Include="source\FreeType.h" />
     <ClInclude Include="source\Renderer.h" />
     <ClInclude Include="source\Sprite.h" />
     <ClInclude Include="source\Texture.h" />
@@ -67,7 +69,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\3rdparty\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -92,7 +94,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\3rdparty\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SDL_MAIN_HANDLEDGLM_FORCE_RADIANS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
