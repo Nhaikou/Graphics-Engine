@@ -11,7 +11,7 @@ class Effect
 {
 public:	
 	//Luo linkitettävän programmin
-	GLuint program;
+	GLuint program();
 	
 	//Linkittää kyseisen programmin
 	GLuint getProgram();

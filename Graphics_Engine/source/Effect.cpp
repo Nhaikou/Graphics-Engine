@@ -8,7 +8,7 @@ std::string readFile(const char *filePath)
 	std::ifstream fileStream(filePath, std::ios::in);
 
 	if (!fileStream.is_open()) {
-		std::cerr << "Could not read file " << filePath << ". File does not exist." << std::endl;
+		std::cerr << "Ei voida lukea tiedostoa  " << filePath << "!\n\nTiedostoa ei ole olemassa.\n" << std::endl;
 		return "";
 	}
 
@@ -23,12 +23,12 @@ std::string readFile(const char *filePath)
 }
 
 
-GLuint LoadShader(const char *vertex_path, const char *fragment_path)
+GLuint Effect::LoadShader(const char *vertex_path, const char *fragment_path)
 {
 	GLuint vertShader = glCreateShader(GL_VERTEX_SHADER);
 	GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-	// Read shaders
+	// Lataa shaderit filusta
 	std::string vertShaderStr = readFile(vertex_path);
 	std::string fragShaderStr = readFile(fragment_path);
 	const char *vertShaderSrc = vertShaderStr.c_str();
@@ -37,24 +37,24 @@ GLuint LoadShader(const char *vertex_path, const char *fragment_path)
 	GLint result = GL_FALSE;
 	int logLength;
 
-	// Compile vertex shader
+	// Compilaa vertexshaderin
 	std::cout << "Compiling vertex shader." << std::endl;
 	glShaderSource(vertShader, 1, &vertShaderSrc, NULL);
 	glCompileShader(vertShader);
 
-	// Check vertex shader
+	// Tarkistaa vertexshaderin
 	glGetShaderiv(vertShader, GL_COMPILE_STATUS, &result);
 	glGetShaderiv(vertShader, GL_INFO_LOG_LENGTH, &logLength);
 	std::vector<char> vertShaderError((logLength > 1) ? logLength : 1);
 	glGetShaderInfoLog(vertShader, logLength, NULL, &vertShaderError[0]);
 	std::cout << &vertShaderError[0] << std::endl;
 
-	// Compile fragment shader
+	// Kompilaa fragmentshaderin
 	std::cout << "Compiling fragment shader." << std::endl;
 	glShaderSource(fragShader, 1, &fragShaderSrc, NULL);
 	glCompileShader(fragShader);
 
-	// Check fragment shader
+	// Tarkistaa fragmentshaderin
 	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &result);
 	glGetShaderiv(fragShader, GL_INFO_LOG_LENGTH, &logLength);
 	std::vector<char> fragShaderError((logLength > 1) ? logLength : 1);
@@ -79,9 +79,9 @@ GLuint LoadShader(const char *vertex_path, const char *fragment_path)
 	return program;
 }
 
-GLuint program()
+GLuint Effect::program()
 {
-	GLuint program = LoadShader("shader.vert", "shader.frag");
+	GLuint program = LoadShader("vertexShader.vert", "fragmentShader.frag");
 	glUseProgram(program);
 
 	return program;
