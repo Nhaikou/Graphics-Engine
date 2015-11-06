@@ -13,6 +13,8 @@ public:
 	TextureManager(const std::string& fileRootDirectory);
 	~TextureManager();
 	
+	const std::string& getfileRoot() const;
+
 	Texture* load(std::string texture, size_t w, size_t h);
 
 	void unLoad(const std::string& texture);

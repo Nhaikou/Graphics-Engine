@@ -64,8 +64,7 @@ void Engine::run()
 	isRunning = true;
 
 	Texture texture;
-
-	texture.readFromFile("../Graphics_Engine/nhaikou.png");
+	texture.readFromFile("textures/nhaikou.png");
 
 	while (isRunning)
 	{

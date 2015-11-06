@@ -38,14 +38,20 @@ bool TextureManager::isLoaded(std::string& texture) const
 	return textures.find(texture) != textures.end();
 }
 
+const std::string& TextureManager::getfileRoot() const
+{
+	return fileRoot;
+}
+
 void TextureManager::unLoad(const std::string& texture)
 {
-
+	
 }
 
 void TextureManager::unLoadEverything()
 {
-
+	// tuhotaan kaikki textuurit
+	textures.clear();
 }
 
 TextureManager::~TextureManager()
