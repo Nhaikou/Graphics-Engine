@@ -107,6 +107,7 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 //Onko kolmio piirretty?
 bool isDrawn = false;
 
+
 void Engine::run()
 {
 	initialize();
@@ -124,14 +125,8 @@ void Engine::run()
 	//P‰‰looppi
 	while (isRunning)
 	{	
-		//Tarkistaa onko jo piirretty kolmiota, jos ei niin piirret‰‰n
-		if (isDrawn == false)
-		{			
-			std::cout << "Piirret‰‰n.." << std::endl;
-			draw();	
-		}
-
-
+					
+		draw();	
 
 		//Ikkunan koon muuttamista varten olevaa koodia
 		//Toistaiseksi turhaa, voi ignorata.
@@ -145,8 +140,6 @@ void Engine::run()
 		//glPopMatrix();
 		///////////////////////////////////////////////////////////////////////
 
-
-
 		while (SDL_PollEvent(&event) == 1)
 		{
 			if (event.type == SDL_QUIT)
@@ -155,22 +148,44 @@ void Engine::run()
 	}
 }
 
+float vari1, vari2, vari3;
+
 //Kolmion piirto
 void Engine::draw()
 {
 	glShadeModel(GL_SMOOTH);
+
 	glBegin(GL_TRIANGLES);
 
+	
+	vari1 = rand() / ((float)RAND_MAX + 1);
+	vari2 = rand() / ((float)RAND_MAX + 1);
+	vari3 = rand() / ((float)RAND_MAX + 1);
 
-	glVertex3f(-0.5f, 0.0f, 0.0f);
-	glVertex3f(0.5f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 0.5f, 0);
+
+	glVertex3f(0.25f, 0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
+	glVertex3f(-0.25f, -0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
+	glVertex3f(-0.25f, 0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
 
 	glEnd();
 
-	std::cout << "Kolmio piirretty!" << std::endl;
+	vari1 = rand() / ((float)RAND_MAX + 1);
+	vari2 = rand() / ((float)RAND_MAX + 1);
+	vari3 = rand() / ((float)RAND_MAX + 1);
 
-	isDrawn = true;
+	glBegin(GL_TRIANGLES);
+
+	glVertex3f(0.25f, 0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
+	glVertex3f(-0.25f, -0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
+	glVertex3f(0.25f, -0.5f, 0.0f);
+	glColor3f(vari1, vari2, vari3);
+
+	glEnd();
 
 	SDL_GL_SwapWindow(window);
 }
