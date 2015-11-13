@@ -29,6 +29,10 @@
     <ClInclude Include="source\Texture.h" />
     <ClInclude Include="source\TextureManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="sample\Graphics_Demo\shaders\fragmentShader.frag" />
+    <None Include="sample\Graphics_Demo\shaders\vertexShader.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D1D237F9-1ED8-4BAF-92F7-62D5F4973BF5}</ProjectGuid>
     <RootNamespace>Graphics_Engine</RootNamespace>
