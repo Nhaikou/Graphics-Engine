@@ -56,16 +56,16 @@
     <Filter Include="Header files">
       <UniqueIdentifier>{63d372b1-97de-4783-b89c-e53a71747981}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Resource files">
       <UniqueIdentifier>{4e14813d-b708-4fb0-8441-e121de13ec9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="sample\Graphics_Demo\shaders\fragmentShader.frag">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource files</Filter>
     </None>
     <None Include="sample\Graphics_Demo\shaders\vertexShader.vert">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource files</Filter>
     </None>
   </ItemGroup>
 </Project>
