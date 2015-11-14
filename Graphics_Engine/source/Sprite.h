@@ -24,6 +24,11 @@ public:
 	void setRotation(float rot);
 	void setColor(glm::vec4 color);
 
+	const Texture* getTexture() const
+	{
+		return texture;
+	}
+
 private:
 
 	const Texture* texture;

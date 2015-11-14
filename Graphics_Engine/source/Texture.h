@@ -14,8 +14,12 @@ public:
 	
 	const GLuint& getId() const;
 
-	int getWidth();
-	int getHeight();
+	int getWidth() const {
+		return width;
+	}
+	int getHeight() const {
+		return height;
+	}
 
 	bool readFromFile(const std::string& assetPath);
 
