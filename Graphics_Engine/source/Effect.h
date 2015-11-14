@@ -10,10 +10,8 @@
 class Effect
 {
 public:	
-	//Luo linkitettävän programmin
-	GLuint program();
 	
-	//Linkittää kyseisen programmin
+	// Linkittää programin
 	GLuint getProgram();
 
 	//Lataa shaderin
@@ -24,6 +22,8 @@ private:
 	void load(std::string);		
 	//Tarkistaa onko tekstuuri ladattu
 	bool isLoaded();
+
+	GLuint program;
 
 };
 #endif

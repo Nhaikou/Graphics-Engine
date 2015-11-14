@@ -76,13 +76,15 @@ GLuint Effect::LoadShader(const char *vertex_path, const char *fragment_path)
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
 
+	this->program = program;
+
 	return program;
 }
 
-GLuint Effect::program()
+GLuint Effect::getProgram()
 {
-	GLuint program = LoadShader("vertexShader.vert", "fragmentShader.frag");
-	glUseProgram(program);
+	/*GLuint program = LoadShader("vertexShader.vert", "fragmentShader.frag");
+	glUseProgram(program);*/
 
 	return program;
 }
