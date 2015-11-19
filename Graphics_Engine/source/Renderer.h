@@ -5,13 +5,10 @@
 
 #include "Sprite.h"
 #include "Effect.h"
+#include <algorithm>
 #include <vector>
-#include <GL\glew.h>
-#include <glm\glm.hpp>
-#include <glm\glm.hpp>
-#include <glm\gtc\matrix_transform.hpp>
-#include <glm\gtx\transform.hpp>
-#include <glm\gtc\type_ptr.hpp>
+#include <GL/glew.h>
+
 
 struct VertexPositionColorTexture {
 	glm::vec2 position;	// texturen positio

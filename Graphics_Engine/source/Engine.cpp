@@ -4,6 +4,7 @@
 #include <cassert>
 #include <Windows.h>
 #include "Texture.h"
+#include "Renderer.h"
 
 Engine::Engine() : isRunning(false), window(nullptr), Window_Width(0), Window_Height(0)
 {
@@ -92,7 +93,7 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	glewExperimental = GL_TRUE;
 	const GLenum glewResult = glewInit();
 	assert(glewResult == GLEW_OK);
-
+	glGetError();
 
 	int versionMajor;
 	int versionMinor;
@@ -118,15 +119,22 @@ void Engine::run()
 	Texture texture;
 	texture.readFromFile("textures/nhaikou.png");
 
-	//Ladataan shaderit..
+	// Ladataan shaderit
 	Effect effect;
 	effect.LoadShader("Shaders/vertexShader.vert", "Shaders/fragmentShader.frag");
+
+	Renderer renderer;
+	renderer.init();
+	Sprite* s = new Sprite(&texture);
+	s->setColor(glm::vec4(1, 0, 0, 1));
+	renderer.add(s);
 
 	//P‰‰looppi
 	while (isRunning)
 	{	
-					
-		draw();	
+		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+		renderer.render();
+		//draw();	
 
 		//Ikkunan koon muuttamista varten olevaa koodia
 		//Toistaiseksi turhaa, voi ignorata.
@@ -145,7 +153,9 @@ void Engine::run()
 			if (event.type == SDL_QUIT)
 				isRunning = false;
 		}
+		SDL_GL_SwapWindow(window);
 	}
+
 }
 
 float vari1, vari2, vari3;

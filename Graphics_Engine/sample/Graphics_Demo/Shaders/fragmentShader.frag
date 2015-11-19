@@ -1,7 +1,13 @@
-#version 120
+#version 330
 
+uniform sampler2D tex;
+in vec4 color;
+in vec2 uv;
+
+
+out vec4 c;
 void main()
 {
-    //Set fragment
-    gl_FragColor = vec4( 0.0, 1.0, 0.0, 1.0 );
+	c =  texture2D(tex, vec2(uv.x, -uv.y)) ;
+    
 }
