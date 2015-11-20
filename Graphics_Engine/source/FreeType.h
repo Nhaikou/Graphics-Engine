@@ -2,8 +2,7 @@
 ////
 #ifndef FREE_TYPE_H
 #define FREE_TYPE_H
-//FreeType
-
+//FreeType 
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include <freetype\ftglyph.h>
@@ -14,11 +13,11 @@
 #include <Windows.h>
 #include <GL\GL.h>
 #include <GL\GLU.h>
-
+//STL
 #include <vector>
 #include <string>
 
-
+//Helpottaa muita jotka käyttävät koodia nappaamaan heittämämme poikkeukset
 #include <stdexcept>
 
 class fontData
