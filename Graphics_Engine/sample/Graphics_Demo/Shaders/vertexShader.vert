@@ -2,14 +2,14 @@
 
 #version 120
 
-varying vec2 position;
-varying vec4 in_color;
-varying vec2 in_uv;
+attribute vec2 position;
+attribute vec4 in_color;
+attribute vec2 in_uv;
 
 uniform mat4 MVP;
 
-varying out vec4 color;
-varying out vec2 uv;
+varying vec4 color;
+varying vec2 uv;
 
 
 void main()
