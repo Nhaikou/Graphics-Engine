@@ -95,7 +95,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	assert(glewResult == GLEW_OK);
 	glGetError();
 
-	glEnable(GL_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// korjaa .PNG kuvien taustat oikein
 
 	int versionMajor;
 	int versionMinor;
@@ -119,7 +120,7 @@ void Engine::run()
 
 	//Ladataan tekstuuri..
 	Texture texture;
-	texture.readFromFile("textures/nhaikou.png");
+	texture.readFromFile("textures/meepo.png");
 
 	// Ladataan shaderit
 	//Effect effect;
