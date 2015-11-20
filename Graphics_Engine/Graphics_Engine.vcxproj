@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3rdparty\include\LodePNG\lodepng.cpp" />
+    <ClCompile Include="source\Camera.cpp" />
     <ClCompile Include="source\Effect.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\FreeType.cpp" />
@@ -21,6 +22,7 @@
     <ClCompile Include="source\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Camera.h" />
     <ClInclude Include="source\Effect.h" />
     <ClInclude Include="source\Engine.h" />
     <ClInclude Include="source\FreeType.h" />
