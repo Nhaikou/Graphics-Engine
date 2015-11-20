@@ -95,6 +95,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	assert(glewResult == GLEW_OK);
 	glGetError();
 
+	glEnable(GL_ALPHA);
+
 	int versionMajor;
 	int versionMinor;
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
@@ -126,13 +128,14 @@ void Engine::run()
 	Renderer renderer;
 	renderer.init();
 	Sprite* s = new Sprite(&texture);
-	s->setColor(glm::vec4(1, 0, 0, 1));
+	//s->setColor(glm::vec4(0, 0, 1, 1));
 	renderer.add(s);
 
 	//Päälooppi
 	while (isRunning)
 	{	
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
 		renderer.render();
 		//draw();	
 
