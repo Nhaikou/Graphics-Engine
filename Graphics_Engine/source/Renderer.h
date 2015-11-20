@@ -13,7 +13,7 @@
 struct VertexPositionColorTexture {
 	glm::vec2 position;	// texturen positio
 	glm::vec4 color;	// texturen väri
-	glm::vec2 uv; // texturen coordinantti
+	glm::vec2 uv;		// texturen koordinaatti
 };
 
 class Renderer
@@ -27,6 +27,7 @@ public:
 
 	void render();
 	void init();
+
 private:
 	Effect effect;
 
@@ -47,6 +48,5 @@ private:
 	GLuint indexBuffer;
 
 	std::vector<unsigned int> indices;
-
 };
 #endif;

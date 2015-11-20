@@ -1,13 +1,15 @@
-#version 330
+//Laatija: Ville Koskinen
+
+#version 120
 
 uniform sampler2D tex;
-in vec4 color;
-in vec2 uv;
+varying vec4 color;
+varying vec2 uv;
+
+varying out vec4 c;
 
 
-out vec4 c;
 void main()
 {
-	c =  texture2D(tex, vec2(uv.x, -uv.y)) ;
-    
+	c =  texture2D(tex, vec2(uv.x, -uv.y)) ; 
 }

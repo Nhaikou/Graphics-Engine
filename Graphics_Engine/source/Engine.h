@@ -23,7 +23,6 @@ public:
 	Engine(Engine const&) = delete;
 	void operator=(Engine const&) = delete;
 
-
 	//k‰ynnist‰‰ moottorin
 	void run();
 

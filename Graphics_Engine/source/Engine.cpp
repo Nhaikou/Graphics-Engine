@@ -120,8 +120,8 @@ void Engine::run()
 	texture.readFromFile("textures/nhaikou.png");
 
 	// Ladataan shaderit
-	Effect effect;
-	effect.LoadShader("Shaders/vertexShader.vert", "Shaders/fragmentShader.frag");
+	//Effect effect;
+	//effect.LoadShader("Shaders/vertexShader.vert", "Shaders/fragmentShader.frag");
 
 	Renderer renderer;
 	renderer.init();
