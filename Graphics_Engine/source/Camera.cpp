@@ -4,41 +4,23 @@
 
 
 Camera::Camera()
-	: direction(0.0f, 0.0f, -1.0f), 
-	  upVector(0.0f, 1.0f, 0.0f)
+	: position(0.0f, 0.0f, 0.0f), rotation(0.0f, 0.0f, -1.0f)
 {
 
 }
 
-const glm::mat4 Camera::getViewMatrix()
+void Camera::initialize()
 {
-	return glm::lookAt(position, position + direction, upVector);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(position.x, position.y, position.z);
+	glm::lookAt(glm::vec3(0.0f, 6000.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, -1.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f));
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
 }
-
-
-
-
-
-
-//void Camera::setCamera()
-//{
-//	//Kameran paikka
-//	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-//
-//	//Kameran suunta
-//	glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-//	glm::vec3 cameraDir = glm::normalize(cameraPos - cameraTarget);
-//
-//	//Kameran 'oikea' ja 'ylös' akseli
-//	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-//	glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDir));
-//	glm::vec3 cameraUp = glm::cross(cameraDir, cameraRight);
-//}
-//
-//void Camera::useCamera()
-//{
-//	glm::mat4 view;
-//	view = glm::lookAt( glm::vec3(0.0f, 0.0f, 3.0f),
-//						glm::vec3(0.0f, 0.0f, 0.0f),
-//						glm::vec3(0.0f, 1.0f, 0.0f));
-//}

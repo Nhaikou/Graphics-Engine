@@ -6,17 +6,15 @@
 #include "Engine.h"
 #include "glm\glm.hpp"
 #include "glm\gtc\matrix_transform.hpp"
-#include "glm\trigonometric.hpp"
 
 
 class Camera
 {
 	glm::vec3 position;
-	glm::vec3 direction;
-	const glm::vec3 upVector;
+	glm::vec3 rotation;
 
 public:
 	Camera();
-	const glm::mat4 getViewMatrix();
+	void initialize();
 };
 #endif

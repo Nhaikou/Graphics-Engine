@@ -1,6 +1,7 @@
 // Laatija: Niko Kinnunen
 
 #include "Renderer.h"
+#include "Camera.h"
 #include <algorithm>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -8,6 +9,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #define ScreenWidth 1280
 #define ScreenHeight 720
+
+Camera camera;
 
 Renderer::Renderer()
 	: vertexBufferPosition(0), projection(glm::ortho(0.f, static_cast<float>(ScreenWidth), static_cast<float>(ScreenHeight), 0.f, -1.f, 1.f))
@@ -17,6 +20,8 @@ Renderer::Renderer()
 
 void Renderer::render()
 {
+	camera.initialize();
+
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
 
