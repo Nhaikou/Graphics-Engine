@@ -5,23 +5,26 @@
 
 
 Camera::Camera()
-	: position(0.0f, 0.0f, 0.0f), rotation(0.0f, 0.0f, -1.0f)
 {
-	
 }
 
 void Camera::initialize()
 {
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
+	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 target = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 direction = glm::normalize(position - target);
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(position.x, position.y, position.z);
-	glm::lookAt(glm::vec3(0.0f, 6000.0f, 0.0f),
-		glm::vec3(0.0f, 0.0f, -1.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 right = glm::normalize(glm::cross(up, direction));
 
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
+	glm::vec3 camUp = glm::cross(direction, right);
+
+	GLfloat radius = 10.0f;
+	GLfloat camX = sin(glfwGetTime()) * radius;
+	GLfloat camZ = cos(glfwGetTime()) * radius;
+
+	glm::mat4 view;
+	view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), 
+					   glm::vec3(0.0f, 0.0f, 0.0f), 
+					   glm::vec3(0.0f, 1.0f, 0.0f));
 }

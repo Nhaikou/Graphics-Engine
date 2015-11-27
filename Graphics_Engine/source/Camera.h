@@ -10,11 +10,12 @@
 
 class Camera
 {
-	glm::vec3 position;
-	glm::vec3 rotation;
-
 public:
 	Camera();
 	void initialize();
+
+protected:
+	
+
 };
 #endif
