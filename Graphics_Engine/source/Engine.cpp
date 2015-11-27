@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include "Texture.h"
 #include "Renderer.h"
+#include "Camera.h"
 
 Engine::Engine() : isRunning(false), window(nullptr), Window_Width(0), Window_Height(0)
 {
@@ -118,6 +119,9 @@ void Engine::run()
 	SDL_Event event;
 	isRunning = true;
 
+	Camera camera;
+	camera.initialize();
+
 	//Ladataan tekstuuri..
 	Texture texture;
 	Texture texture2;
@@ -143,22 +147,10 @@ void Engine::run()
 	while (isRunning)
 	{	
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-		
+
 		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
 		renderer.render();
-		//draw();	
-
-		//Ikkunan koon muuttamista varten olevaa koodia
-		//Toistaiseksi turhaa, voi ignorata.
-
-		//glMatrixMode(GL_MODELVIEW);
-		//glLoadIdentity();
-		//glPopMatrix();
-		//glMatrixMode(GL_PROJECTION);
-		//glPopMatrix();
-		//glMatrixMode(GL_MODELVIEW);
-		//glPopMatrix();
-		///////////////////////////////////////////////////////////////////////
+		camera.render();
 
 		while (SDL_PollEvent(&event) == 1)
 		{
@@ -168,46 +160,4 @@ void Engine::run()
 		SDL_GL_SwapWindow(window);
 	}
 
-}
-
-float vari1, vari2, vari3;
-
-//Kolmion piirto
-void Engine::draw()
-{
-	glShadeModel(GL_SMOOTH);
-
-	glBegin(GL_TRIANGLES);
-
-	
-	vari1 = rand() / ((float)RAND_MAX + 1);
-	vari2 = rand() / ((float)RAND_MAX + 1);
-	vari3 = rand() / ((float)RAND_MAX + 1);
-
-
-	glVertex3f(0.25f, 0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-	glVertex3f(-0.25f, -0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-	glVertex3f(-0.25f, 0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-
-	glEnd();
-
-	vari1 = rand() / ((float)RAND_MAX + 1);
-	vari2 = rand() / ((float)RAND_MAX + 1);
-	vari3 = rand() / ((float)RAND_MAX + 1);
-
-	glBegin(GL_TRIANGLES);
-
-	glVertex3f(0.25f, 0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-	glVertex3f(-0.25f, -0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-	glVertex3f(0.25f, -0.5f, 0.0f);
-	glColor3f(vari1, vari2, vari3);
-
-	glEnd();
-
-	SDL_GL_SwapWindow(window);
 }

@@ -6,16 +6,13 @@
 #include "Engine.h"
 #include "glm\glm.hpp"
 #include "glm\gtc\matrix_transform.hpp"
-
+#include "GLFW\glfw3.h"
 
 class Camera
 {
 public:
 	Camera();
-	void initialize();
-
-protected:
-	
-
+	bool initialize();
+	void render();
 };
 #endif

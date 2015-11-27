@@ -1,30 +1,56 @@
 // Laatija: Ville Koskinen
 
 #include "Camera.h"
-#include "GLFW\glfw3.h"
-
+#define ScreenWidth 1280
+#define ScreenHeight 720
 
 Camera::Camera()
 {
 }
 
-void Camera::initialize()
+enum ViewPortMode
 {
-	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 target = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 direction = glm::normalize(position - target);
+	VIEWPORT_MODE_FULL,
+	VIEWPORT_MODE_HALF_CENTER,
+	VIEWPORT_MODE_HALF_TOP,
+	VIEWPORT_MODE_QUAD,
+	VIEWPORT_MODE_RADAR
+};
 
-	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-	glm::vec3 right = glm::normalize(glm::cross(up, direction));
+int gViewportMode = VIEWPORT_MODE_FULL;
 
-	glm::vec3 camUp = glm::cross(direction, right);
+bool Camera::initialize()
+{
+	//Set the viewport
+	glViewport(0.f, 0.f, ScreenWidth, ScreenHeight);
 
-	GLfloat radius = 10.0f;
-	GLfloat camX = sin(glfwGetTime()) * radius;
-	GLfloat camZ = cos(glfwGetTime()) * radius;
+	//Initialize Projection Matrix
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0.0, ScreenWidth, ScreenHeight, 0.0, 1.0, -1.0);
 
-	glm::mat4 view;
-	view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), 
-					   glm::vec3(0.0f, 0.0f, 0.0f), 
-					   glm::vec3(0.0f, 1.0f, 0.0f));
+	//Initialize Modelview Matrix
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	return true;
+}
+
+void Camera::render()
+{
+	glLoadIdentity();
+	glTranslatef(ScreenWidth / 2.0f, ScreenHeight / 2.0f, 0.0f);
+
+	if (gViewportMode == VIEWPORT_MODE_FULL)
+	{
+		glViewport(5.0f, 1.0f, ScreenWidth, ScreenHeight);
+	}
+	else if (gViewportMode == VIEWPORT_MODE_HALF_CENTER)
+	{
+		glViewport(ScreenWidth / 4.0f, ScreenHeight / 4.0f, ScreenWidth / 2.0f, ScreenHeight / 2.0f);
+	}
+	else if (gViewportMode == VIEWPORT_MODE_HALF_TOP)
+	{
+		glViewport(ScreenWidth / 4.0f, ScreenHeight / 2.0f, ScreenWidth / 2.0f, ScreenHeight / 2.0f);
+	}
 }
