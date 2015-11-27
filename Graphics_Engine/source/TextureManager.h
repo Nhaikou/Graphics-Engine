@@ -15,7 +15,7 @@ public:
 	
 	const std::string& getfileRoot() const;
 
-	Texture* load(std::string texture, size_t w, size_t h);
+	Texture* load(std::string texture);
 
 	void unLoad(const std::string& texture);
 	void unLoadEverything();

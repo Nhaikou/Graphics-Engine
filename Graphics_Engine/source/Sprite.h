@@ -34,7 +34,7 @@ private:
 	const Texture* texture;
 	
 	glm::vec2 position;
-	glm::vec2 scale;
+	glm::vec2 scale = { 1.0, 1.0 };
 	
 	float rotation;
 

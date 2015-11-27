@@ -13,13 +13,13 @@ TextureManager::TextureManager(const std::string& fileRootDirectory = "../sample
 }
 
 // Ladataan tekstuurit tiedostosta.
-Texture* TextureManager::load(std::string assetPath, size_t w, size_t h)
+Texture* TextureManager::load(std::string assetPath)
 {
 	if (!isLoaded(assetPath))
 	{
 		std::string path = fileRoot + "\\" + assetPath;
 
-		Texture* texture = new Texture(w, h);
+		Texture* texture = new Texture();
 		textures.insert(std::pair<std::string, Texture*>(assetPath, texture));
 
 		if (!texture->readFromFile(path))
