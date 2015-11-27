@@ -121,21 +121,23 @@ void Engine::run()
 	//Ladataan tekstuuri..
 	Texture texture;
 	Texture texture2;
+	Texture texture3;
 	texture.readFromFile("textures/meepo.png");
 	texture2.readFromFile("textures/lich_king.png");
-	// Ladataan shaderit
-	//Effect effect;
-	//effect.LoadShader("Shaders/vertexShader.vert", "Shaders/fragmentShader.frag");
+	texture3.readFromFile("textures/kikki.png");
 
 	Renderer renderer;
 	renderer.init();
 	Sprite* s = new Sprite(&texture);
 	Sprite* s2 = new Sprite(&texture2);
+	Sprite* s3 = new Sprite(&texture3);
 	//s->setColor(glm::vec4(0, 0, 1, 1));
 
 	s2->setScale(glm::vec2(2, 2));
+	s3->setPosition(glm::vec2(1280 - 202.0f, 720 - 217.0f));
 	renderer.add(s);
 	renderer.add(s2);
+	renderer.add(s3);
 
 	//Päälooppi
 	while (isRunning)
