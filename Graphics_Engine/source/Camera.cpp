@@ -1,12 +1,13 @@
 // Laatija: Ville Koskinen
 
 #include "Camera.h"
+#include "GLFW\glfw3.h"
 
 
 Camera::Camera()
 	: position(0.0f, 0.0f, 0.0f), rotation(0.0f, 0.0f, -1.0f)
 {
-
+	
 }
 
 void Camera::initialize()
