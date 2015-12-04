@@ -21,5 +21,5 @@ void Camera::render()
 {
 	camera.x = 0;
 	camera.y = 0;
-	system("pause");
+	//system("pause");
 }
