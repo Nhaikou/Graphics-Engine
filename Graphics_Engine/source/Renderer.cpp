@@ -2,6 +2,7 @@
 
 #include "Renderer.h"
 #include "Camera.h"
+#include "FreeType.h"
 #include <algorithm>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -11,7 +12,7 @@
 #define ScreenHeight 720
 
 Camera camera;
-
+fontData font;
 Renderer::Renderer()
 	: vertexBufferPosition(0), projection(glm::ortho(0.f, static_cast<float>(ScreenWidth), static_cast<float>(ScreenHeight), 0.f, -1.f, 1.f))
 {
@@ -24,6 +25,11 @@ void Renderer::render()
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+	//glLoadIdentity();
+	//glTranslatef(0.0f, 0.0f, -1.0f);
+	//font.init("Fontit/Arcon-regular.otf", 16);
+	//glRasterPos2f(-0.40f, 0.35f);
+	//font.print(font, 320, 200, "Active Freetype Text -%7.2f", 3);
 
 	// piirrä, tunge vertexit jne
 	for (Sprite* sprite : sprites) 
