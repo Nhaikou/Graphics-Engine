@@ -12,7 +12,10 @@ class Camera
 {
 public:
 	Camera();
-	bool initialize();
+	void initialize();
 	void render();
+
+protected:
+	SDL_Rect camera;
 };
 #endif
