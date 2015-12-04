@@ -36,7 +36,7 @@ private:
 	glm::vec2 position;
 	glm::vec2 scale = { 1.0, 1.0 };
 	
-	float rotation;
+	float rotation = 1.0;
 
 	glm::vec4 color;
 
