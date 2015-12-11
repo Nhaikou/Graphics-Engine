@@ -126,22 +126,26 @@ void Engine::run()
 	Texture texture;
 	Texture texture2;
 	Texture texture3;
+	Texture texture4;
 	texture.readFromFile("textures/meepo.png");
 	texture2.readFromFile("textures/lich_king.png");
 	texture3.readFromFile("textures/kikki.png");
+	texture4.readFromFile("textures/black.png");
 
 	Renderer renderer;
 	renderer.init();
 	Sprite* s = new Sprite(&texture);
 	Sprite* s2 = new Sprite(&texture2);
 	Sprite* s3 = new Sprite(&texture3);
-	//s->setColor(glm::vec4(0, 0, 1, 1));
-
+	Sprite* s4 = new Sprite(&texture4);
+	s->setColor(glm::vec4(0, 0, 1, 0));
+	s4->setColor(glm::vec4(1, 0, 1, 1));
 	s2->setScale(glm::vec2(2, 2));
 	s3->setPosition(glm::vec2(1280 - 202.0f, 720 - 217.0f));
 	renderer.add(s);
 	renderer.add(s2);
 	renderer.add(s3);
+	renderer.add(s4);
 
 	//Päälooppi
 	while (isRunning)
@@ -149,6 +153,8 @@ void Engine::run()
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
+		s3->setRotation(s->getRotation() + 0.2f);
+		
 		renderer.render();
 		camera.render();
 
