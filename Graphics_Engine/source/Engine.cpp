@@ -109,9 +109,6 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	
 }
 
-//Onko kolmio piirretty?
-bool isDrawn = false;
-
 
 void Engine::run()
 {
@@ -127,31 +124,35 @@ void Engine::run()
 	Texture texture2;
 	Texture texture3;
 	Texture texture4;
+	Texture texture5;
 	texture.readFromFile("textures/meepo.png");
 	texture2.readFromFile("textures/lich_king.png");
 	texture3.readFromFile("textures/kikki.png");
 	texture4.readFromFile("textures/black.png");
-
+	texture5.readFromFile("textures/nhaikou3.png");
 	Renderer renderer;
 	renderer.init();
 	Sprite* s = new Sprite(&texture);
 	Sprite* s2 = new Sprite(&texture2);
 	Sprite* s3 = new Sprite(&texture3);
 	Sprite* s4 = new Sprite(&texture4);
+	Sprite* s5 = new Sprite(&texture5);
+	s5->setScale(glm::vec2(3, 3));
 	s->setColor(glm::vec4(0, 0, 1, 0));
 	s4->setColor(glm::vec4(1, 0, 1, 1));
-	s2->setScale(glm::vec2(2, 2));
+	s2->setScale(glm::vec2(1.5, 1.5));
 	s3->setPosition(glm::vec2(1280 - 202.0f, 720 - 217.0f));
 	renderer.add(s);
 	renderer.add(s2);
 	renderer.add(s3);
-	renderer.add(s4);
+	//renderer.add(s4);
+	//renderer.add(s5);
 
 	//Päälooppi
 	while (isRunning)
 	{	
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
+		s5->setPosition(s5->getPosition() + glm::vec2(0.1f, 0.0f));
 		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
 		s3->setRotation(s->getRotation() + 0.2f);
 		
