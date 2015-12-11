@@ -109,7 +109,7 @@
 
 		//Lataa fonttin tiedot tiedostosta, jos koodi hajoaa niin se hajoaa t‰‰ll‰.
 		if (FT_New_Face(library, fname, 0, &face))
-			throw std::runtime_error("FT_New_Face failed (probaply problems whit font file!");
+			throw std::runtime_error("FT_New_Face failed (probaply problems whit font file!)");
 		
 		
 		//Koska vitun freetype tulkitsee fontin kokoa koossa 1/64 pikselist‰, joudumme pyyt‰m‰‰n koot 64 kertaisina.

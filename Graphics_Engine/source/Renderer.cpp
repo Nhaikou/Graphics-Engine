@@ -12,12 +12,33 @@
 #define ScreenHeight 720
 
 Camera camera;
-fontData font;
+fontData ourData;
+
 Renderer::Renderer()
 	: vertexBufferPosition(0), projection(glm::ortho(0.f, static_cast<float>(ScreenWidth), static_cast<float>(ScreenHeight), 0.f, -1.f, 1.f))
 {
 	effect.LoadShader("Shaders/vertexShader.vert", "Shaders/fragmentShader.frag");
 }
+
+/*
+GLvoid BuildFont(GLvoid)
+{
+	HDC hDC = NULL;
+
+	GLuint base;
+
+
+	HFONT font;
+	HFONT oldFont;
+	base = glGenLists(96);
+	font = CreateFont(-24, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_TT_ONLY_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, FF_DONTCARE | DEFAULT_PITCH, "Times New Roman");
+	oldFont = (HFONT)SelectObject(hDC, font);
+	wglUseFontBitmaps(hDC, 32, 96, base);
+	SelectObject(hDC, oldFont);
+	DeleteObject(font);
+
+}
+*/
 
 void Renderer::render()
 {
@@ -25,11 +46,7 @@ void Renderer::render()
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-	//glLoadIdentity();
-	//glTranslatef(0.0f, 0.0f, -1.0f);
-	//font.init("Fontit/Arcon-regular.otf", 16);
-	//glRasterPos2f(-0.40f, 0.35f);
-	//font.print(font, 320, 200, "Active Freetype Text -%7.2f", 3);
+
 
 	// piirrä, tunge vertexit jne
 	for (Sprite* sprite : sprites) 
