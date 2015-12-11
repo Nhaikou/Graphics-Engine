@@ -91,7 +91,7 @@
 
 	}
 
-	void fontData::init(const char * fname, unsigned int Height)
+	void fontData::init(const char *fname, unsigned int Height)
 	{
 		//Allokoidaan v‰h‰n muistia varastoimaan tekstuuri id:t‰
 		textures = new GLuint[128];
@@ -112,8 +112,8 @@
 			throw std::runtime_error("FT_New_Face failed (probaply problems whit font file!)");
 		
 		
-		//Koska vitun freetype tulkitsee fontin kokoa koossa 1/64 pikselist‰, joudumme pyyt‰m‰‰n koot 64 kertaisina.
-		//h << 6 on kaunisteltu muoto.
+		//Koska freetype tulkitsee fontin kokoa koossa 1/64 pikselist‰, joudumme pyyt‰m‰‰n koot 64 kertaisina.
+		//Height << 6 on kaunisteltu muoto.
 		FT_Set_Char_Size(face, Height << 6, Height << 6, 96, 96);
 		
 

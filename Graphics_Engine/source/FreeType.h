@@ -23,7 +23,7 @@
 class fontData
 {
 	float Height;
-	GLuint * textures;
+	GLuint *textures;
 	GLuint listBase;
 public:
 

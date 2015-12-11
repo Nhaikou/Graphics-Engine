@@ -31,12 +31,108 @@ GLvoid BuildFont(GLvoid)
 	HFONT font;
 	HFONT oldFont;
 	base = glGenLists(96);
-	font = CreateFont(-24, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_TT_ONLY_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, FF_DONTCARE | DEFAULT_PITCH, "Times New Roman");
+	font = CreateFont(	-24, 
+						0, 
+						0, 
+						0, 
+						FW_BOLD, 
+						FALSE,
+						FALSE,
+						FALSE,
+						ANSI_CHARSET,
+						OUT_TT_ONLY_PRECIS,
+						CLIP_DEFAULT_PRECIS,
+						ANTIALIASED_QUALITY,
+						FF_DONTCARE | DEFAULT_PITCH,
+						"Times New Roman");
 	oldFont = (HFONT)SelectObject(hDC, font);
 	wglUseFontBitmaps(hDC, 32, 96, base);
 	SelectObject(hDC, oldFont);
 	DeleteObject(font);
 
+}
+
+GLvoid KillFont(GLvoid)
+{
+	glDeleteLists(base, 96);
+}
+
+GLvoid ReSizeGLScene(GLsizei width, GLsizei height)		// Resize And Initialize The GL Window
+{
+	if (height == 0)										// Prevent A Divide By Zero By
+	{
+		height = 1;										// Making Height Equal One
+	}
+
+	glViewport(0, 0, width, height);						// Reset The Current Viewport
+
+	glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
+	glLoadIdentity();									// Reset The Projection Matrix
+
+	// Calculate The Aspect Ratio Of The Window
+	gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
+
+	glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
+	glLoadIdentity();									// Reset The Modelview Matrix
+}
+
+int InitGL(GLvoid)
+{
+	glShadeModel(GL_SMOOTH);
+	BuildFont();
+	ourData.init("Fontit/Dense-regular.TTF", 16);
+	return TRUE;
+}
+
+GLvoid glPrint(const char *fmt, ...)
+{
+	
+	char text[ 256 ];
+	va_list ap;
+	if (fmt == NULL)
+	{
+		return;
+	}
+	va_start(ap, fmt);
+	vsprintf_s(text, fmt, ap);
+	va_end(ap);
+
+	glPushAttrib(GL_LIST_BIT);
+	glListBase(base - 32);
+	glCallLists(strlen(text), GL_UNSIGNED_BYTE, text);
+	glPopAttrib();
+}
+
+int DrawGLScene(GLvoid)
+{
+	float cnt1=0, cnt2=0;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
+	glLoadIdentity();									// Reset The Current Modelview Matrix
+	glTranslatef(0.0f, 0.0f, -1.0f);						// Move One Unit Into The Screen
+
+	// Blue Text
+	glColor3ub(0, 0, 0xff);
+
+	// Position The WGL Text On The Screen
+	glRasterPos2f(-0.40f, 0.35f);
+	
+
+	glColor3ub(0xff, 0, 0);
+
+	glPushMatrix();
+	glLoadIdentity();
+	glRotatef(cnt1, 0, 0, 1);
+	glScalef(1, .8 + .3*cos(cnt1 / 5), 1);
+	glTranslatef(-180, 0, 0);
+	ourData.print(ourData, 320, 240, "Active FreeType Text - %7.2f", cnt1);
+	glPopMatrix();
+
+	//Uncomment this to test out print's ability to handle newlines.
+	//freetype::print(our_font, 320, 200, "Here\nthere\nbe\n\nnewlines\n.", cnt1);
+
+	cnt1 += 0.051f;										// Increase The First Counter
+	cnt2 += 0.005f;										// Increase The First Counter
+	return TRUE;										// Everything Went OK
 }
 */
 
