@@ -156,8 +156,9 @@ void Engine::run()
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 		s5->setPosition(s5->getPosition() + glm::vec2(0.1f, 0.0f));
 		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
-		s3->setRotation(s->getRotation() + 0.2f);
-		
+		s3->setRotation(s3->getRotation() + 2.f);
+		s->setScale(s->getScale() + glm::vec2(0.002f, 0.002f));
+		s->setRotation(s->getRotation() + 2.f);
 		renderer.render();
 		camera.render();
 
