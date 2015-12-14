@@ -99,6 +99,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// korjaa .PNG kuvien taustat oikein
 
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Ikkunan taustan väri
+
 	int versionMajor;
 	int versionMinor;
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
