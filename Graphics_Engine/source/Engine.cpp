@@ -60,7 +60,7 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	std::cout << std::endl;
 	
 
-	std::cout << "\n\n-------------------------------------------\n\nCONTROLS:\n\n - Arrow keys to move\n - Numpad 8 & 2 to scale\n - Numpad 4 & 6 to rotate\n\n-------------------------------------------\n\n" << std::endl;
+	std::cout << "\n\n-------------------------------------------\n\nCONTROLS:\n\n - Arrow keys to move\n - Numpad 8 & 2 to scale\n - Numpad 4 & 6 to rotate\n - ESC to quit\n\n-------------------------------------------\n\n" << std::endl;
 }
 
 //Tarvitaan pääloopissa komennettavan spriten vaihtoon
@@ -98,11 +98,11 @@ void Engine::run()
 	//s->setColor(glm::vec4(0, 0, 1, 0));
 	s2->setScale(glm::vec2(1.5, 1.5));
 
-	s3->setPosition(glm::vec2(1280 - 202.0f, 720 - 217.0f));
-	s3->setScale(glm::vec2(1, 1));
+	s3->setPosition(glm::vec2(1280, 720 - 217.0f));
+	s3->setScale(glm::vec2(-1, 1));
 
-	s4->setPosition(glm::vec2(205, 720 - 08.0f));
-	s4->setScale(glm::vec2(-1, -1));
+	s4->setPosition(glm::vec2(0, 720 - 217.0f));
+	s4->setScale(glm::vec2(1, 1));
 
 	s5->setColor(glm::vec4(1, 0.5, 0, 1));
 	s5->setPosition(glm::vec2(1280 / 2 - 100, 200));
@@ -123,8 +123,8 @@ void Engine::run()
 
 
 		// sprite 3 "Kikkihiiri kuvat"
-		s3->setRotation(s3->getRotation() + 2.0f);
-		s4->setRotation(s4->getRotation() - 2.0f);
+		s3->setRotation(s3->getRotation() - 2.0f);
+		s4->setRotation(s4->getRotation() + 2.0f);
 
 		// sprite 4 "Neliö"
 		s5->setRotation(s5->getRotation() + 0.2f);
