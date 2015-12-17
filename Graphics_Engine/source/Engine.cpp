@@ -18,62 +18,12 @@ Engine::~Engine()
 	SDL_Quit();
 }
 
-
 void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 {
 	std::cout << "Resoluutio " << Window_Width << " x " << Window_Height << std::endl;
 	std::cout << "Alustetaan..." << std::endl;
 	int result = SDL_Init(SDL_INIT_VIDEO);
 	assert(result == NULL);
-
-
-
-	//Ikkunan koon muuttamista varten olevaa koodia
-	//Toistaiseksi turhaa, voi ignorata.
-
-	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//
-	//int virtual_width = 1280;
-	//int virtual_height = 720;
-	//
-	//float targetAspectRatio = virtual_width / virtual_height;
-	//
-	//// figure out the largest area that fits in this resolution at the desired aspect ratio
-	//int width = Window_Width;
-	//int height = (int)(width / targetAspectRatio + 0.5f);
-	//
-	//if (height > Window_Height)
-	//{
-	//	//It doesn't fit our height, we must switch to pillarbox then
-	//	height = Window_Height;
-	//	width = (int)(height * targetAspectRatio + 0.5f);
-	//}
-	//
-	//// set up the new viewport centered in the backbuffer
-	//int vp_x = (Window_Width / 2) - (width / 2);
-	//int vp_y = (Window_Height / 2) - (height / 2);
-	//
-	//glViewport(vp_x, vp_y, width, height);
-	//
-	//glMatrixMode(GL_PROJECTION);
-	//glPushMatrix();
-	//glLoadIdentity();
-	//glOrtho(0, Window_Width, Window_Height, 0, -1, 1);
-	//glMatrixMode(GL_MODELVIEW);
-	//glPushMatrix();
-	//glLoadIdentity();
-	//
-	//glMatrixMode(GL_MODELVIEW);
-	//glPushMatrix();
-	//
-	////Now to calculate the scale considering the screen size and virtual size
-	//float scale_x = (float)((float)(Window_Width) / (float)virtual_width);
-	//float scale_y = (float)((float)(Window_Height) / (float)virtual_height);
-	//glScalef(scale_x, scale_y, 1.0f);
-	//////////////////////////////////////////////////////////////////////////////////
-
-
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -99,6 +49,8 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// korjaa .PNG kuvien taustat oikein
 
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Ikkunan taustan v‰ri
+
 	int versionMajor;
 	int versionMinor;
 	glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
@@ -107,8 +59,12 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 
 	std::cout << std::endl;
 	
+
+	std::cout << "\n\n-------------------------------------------\n\nCONTROLS:\n\n - Arrow keys to move\n - Numpad 8 & 2 to scale\n - Numpad 4 & 6 to rotate\n - ESC to quit\n\n-------------------------------------------\n\n" << std::endl;
 }
 
+//Tarvitaan p‰‰loopissa komennettavan spriten vaihtoon
+int selectedSprite = 1;
 
 void Engine::run()
 {
@@ -126,45 +82,118 @@ void Engine::run()
 	Texture texture4;
 	Texture texture5;
 	texture.readFromFile("textures/meepo.png");
-	texture2.readFromFile("textures/lich_king.png");
+	//texture2.readFromFile("textures/lich_king.png");
 	texture3.readFromFile("textures/kikki.png");
 	texture4.readFromFile("textures/black.png");
-	texture5.readFromFile("textures/nhaikou3.png");
+	
 	Renderer renderer;
 	renderer.init();
 	Sprite* s = new Sprite(&texture);
 	Sprite* s2 = new Sprite(&texture2);
 	Sprite* s3 = new Sprite(&texture3);
-	Sprite* s4 = new Sprite(&texture4);
-	Sprite* s5 = new Sprite(&texture5);
-	s5->setScale(glm::vec2(3, 3));
-	s->setColor(glm::vec4(0, 0, 1, 0));
-	s4->setColor(glm::vec4(1, 0, 1, 1));
+	Sprite* s4 = new Sprite(&texture3);
+	Sprite* s5 = new Sprite(&texture4);
+
+
+	//s->setColor(glm::vec4(0, 0, 1, 0));
 	s2->setScale(glm::vec2(1.5, 1.5));
-	s3->setPosition(glm::vec2(1280 - 202.0f, 720 - 217.0f));
+
+	s3->setPosition(glm::vec2(1280, 720 - 217.0f));
+	s3->setScale(glm::vec2(-1, 1));
+
+	s4->setPosition(glm::vec2(0, 720 - 217.0f));
+	s4->setScale(glm::vec2(1, 1));
+
+	s5->setColor(glm::vec4(1, 0.5, 0, 1));
+	s5->setPosition(glm::vec2(1280 / 2 - 100, 200));
+
+	renderer.add(s5);
 	renderer.add(s);
-	renderer.add(s2);
+	//renderer.add(s2);
 	renderer.add(s3);
-	//renderer.add(s4);
-	//renderer.add(s5);
+	renderer.add(s4);
+	
+
+	
 
 	//P‰‰looppi
 	while (isRunning)
 	{	
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-		s5->setPosition(s5->getPosition() + glm::vec2(0.1f, 0.0f));
-		s->setPosition(s->getPosition()+glm::vec2(0.2f, 0.2f));
-		s3->setRotation(s->getRotation() + 0.2f);
-		
-		renderer.render();
-		camera.render();
 
-		while (SDL_PollEvent(&event) == 1)
+
+		// sprite 3 "Kikkihiiri kuvat"
+		s3->setRotation(s3->getRotation() - 2.0f);
+		s4->setRotation(s4->getRotation() + 2.0f);
+
+		// sprite 4 "Neliˆ"
+		s5->setRotation(s5->getRotation() + 0.2f);
+		
+
+		//Tarkkailee tekeekˆ k‰ytt‰j‰ jotain
+		while (SDL_PollEvent(&event))
 		{
-			if (event.type == SDL_QUIT)
-				isRunning = false;
+			switch (event.type)
+			{
+			//Nappia painetaan n‰pp‰imistˆll‰..
+			case SDL_KEYDOWN:
+
+				//Mit‰ nappia painettiin?
+				switch (event.key.keysym.sym)
+				{
+				//Meepo liikkuu oikealle
+				case SDLK_RIGHT:
+					s->setPosition(s->getPosition() + glm::vec2(10.0f, 0.0f));
+					break;
+
+				//Meepo liikkuu vasemmalle
+				case SDLK_LEFT:
+					s->setPosition(s->getPosition() + glm::vec2(-10.0f, 0.0f));
+					break;
+
+				//Meepo liikkuu ylˆs
+				case SDLK_UP:
+					s->setPosition(s->getPosition() + glm::vec2(0.0f, -8.0f));
+					break;
+
+				//Meepo liikkuu alas
+				case SDLK_DOWN:
+					s->setPosition(s->getPosition() + glm::vec2(0.0f, 8.0f));
+					break;
+
+				//Meepo kasvaa isommaksi
+				case SDLK_KP_8:
+					s->setScale(s->getScale() + glm::vec2(0.05f, 0.05f));
+					break;
+					
+				//Meepo kutistuu pienemm‰ksi
+				case SDLK_KP_2:
+					s->setScale(s->getScale() + glm::vec2(-0.05f, -0.05f));
+					break;
+
+				//Meepo k‰‰ntyy myˆt‰p‰iv‰‰n
+				case SDLK_KP_6:
+					s->setRotation(s->getRotation() + 3.5f);
+					break;
+
+				//Meepo k‰‰ntyy vastap‰iv‰‰n
+				case SDLK_KP_4:
+					s->setRotation(s->getRotation() - 3.5f);
+					break;
+
+				//Ohjelma lopetetaan
+				case SDLK_ESCAPE:
+					SDL_QUIT;
+					SDL_DestroyWindow(window);
+					isRunning = false;
+				}
+			//Napista p‰‰stettiin irti
+			case SDL_KEYUP:
+				break;
+			}
 		}
+
+		renderer.render();
 		SDL_GL_SwapWindow(window);
 	}
-
 }

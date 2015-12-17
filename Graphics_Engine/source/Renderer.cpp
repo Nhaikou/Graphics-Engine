@@ -8,6 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm\gtx\rotate_vector.hpp>
 #define ScreenWidth 1280
 #define ScreenHeight 720
 
@@ -144,32 +145,44 @@ void Renderer::render()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
 
 
+
 	// piirrä, tunge vertexit jne
 	for (Sprite* sprite : sprites) 
 	{
+		float width = sprite->getTexture()->getWidth() * sprite->getScale().x;
+		float height = sprite->getTexture()->getHeight() * sprite->getScale().y;
+
 		// Vasen alanurkka
 		VertexPositionColorTexture vertices[4];
 		vertices[0] = VertexPositionColorTexture{
-			sprite->getPosition(),
+			sprite->getPosition()
+			+ glm::rotate(glm::vec2(-width / 2.0f, -height / 2.0f),
+			glm::radians(sprite->getRotation())) + glm::vec2(width/2.0f, height/2.0f),
 			sprite->getColor(),
-			glm::vec2(0, 1)
+			glm::vec2(0, 1),
 		};
 		// Oikea alanurkka
 		vertices[1] = VertexPositionColorTexture{
-			sprite->getPosition() + glm::vec2(sprite->getTexture()->getWidth() * sprite->getScale().x, 0),
+			sprite->getPosition()
+			+ glm::rotate(glm::vec2(width / 2.0f, -height / 2.0f),
+			glm::radians(sprite->getRotation())) + glm::vec2(width / 2.0f, height / 2.0f),
 			sprite->getColor(),
 			glm::vec2(1, 1)
 		};
 
 		// Vasen ylänurkka
 		vertices[2] = VertexPositionColorTexture{
-			sprite->getPosition() + glm::vec2(0, sprite->getTexture()->getHeight() * sprite->getScale().y),
+			sprite->getPosition()
+			+ glm::rotate(glm::vec2(-width / 2.0f, height / 2.0f),
+			glm::radians(sprite->getRotation())) + glm::vec2(width / 2.0f, height / 2.0f),
 			sprite->getColor(),
 			glm::vec2(0, 0)
 		};
 		// Oikea ylänurkka
 		vertices[3] = VertexPositionColorTexture{
-			sprite->getPosition() + glm::vec2(sprite->getTexture()->getWidth() * sprite->getScale().x, sprite->getTexture()->getHeight() * sprite->getScale().y),
+			sprite->getPosition()
+			+ glm::rotate(glm::vec2(width / 2.0f, height / 2.0f),
+			glm::radians(sprite->getRotation())) + glm::vec2(width / 2.0f, height / 2.0f),
 			sprite->getColor(),
 			glm::vec2(1, 0)
 		};
