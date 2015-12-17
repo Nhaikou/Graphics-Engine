@@ -38,7 +38,7 @@ GLuint Effect::LoadShader(const char *vertex_path, const char *fragment_path)
 	int logLength;
 
 	// Compilaa vertexshaderin
-	std::cout << "Kompiloidaan vertex shaderia..";
+	std::cout << "Luodaan vertex shaderia..";
 	glShaderSource(vertShader, 1, &vertShaderSrc, NULL);
 	glCompileShader(vertShader);
 
@@ -50,7 +50,7 @@ GLuint Effect::LoadShader(const char *vertex_path, const char *fragment_path)
 	std::cout << &vertShaderError[0] << std::endl;
 
 	// Kompilaa fragmentshaderin
-	std::cout << "Kompiloidaan fragment shaderia..";
+	std::cout << "Luodaan fragment shaderia..";
 	glShaderSource(fragShader, 1, &fragShaderSrc, NULL);
 	glCompileShader(fragShader);
 

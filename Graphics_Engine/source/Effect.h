@@ -24,6 +24,5 @@ private:
 	bool isLoaded();
 
 	GLuint program;
-
 };
 #endif
