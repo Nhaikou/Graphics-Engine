@@ -50,5 +50,5 @@ void Sprite::setColor(glm::vec4 color)
 
 Sprite::~Sprite()
 {
-	// muistivuotojen korjaaminen
+	
 }
