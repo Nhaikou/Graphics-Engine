@@ -37,7 +37,7 @@ GLuint Effect::LoadShader(const char *vertex_path, const char *fragment_path)
 	GLint result = GL_FALSE;
 	int logLength;
 
-	// Compilaa vertexshaderin
+	// Kompilaa vertexshaderin
 	std::cout << "Luodaan vertex shaderia..";
 	glShaderSource(vertShader, 1, &vertShaderSrc, NULL);
 	glCompileShader(vertShader);

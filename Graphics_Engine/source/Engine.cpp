@@ -60,11 +60,9 @@ void Engine::initialize(int Window_Width = 1280, int Window_Height = 720)
 	std::cout << std::endl;
 	
 
-	std::cout << "\n\n-------------------------------------------\n\nCONTROLS:\n\n - Arrow keys to move\n - Numpad 8 & 2 to scale\n - Numpad 4 & 6 to rotate\n - ESC to quit\n\n-------------------------------------------\n\n" << std::endl;
+	std::cout << "\n\n-------------------------------------------\n\nKONTROLLIT:\n\n - Nuolet	=	liikkuminen\n - Numpad 8 & 2	=	koko\n - Numpad 4 & 6	=	kaanto\n - Space	=	nelion vari\n - ESC		=	lopetus\n\n-------------------------------------------\n\n" << std::endl;
 }
 
-//Tarvitaan pääloopissa komennettavan spriten vaihtoon
-int selectedSprite = 1;
 
 void Engine::run()
 {
@@ -113,8 +111,8 @@ void Engine::run()
 	renderer.add(s3);
 	renderer.add(s4);
 	
-
-	
+	//Alustaa neliön värit
+	float color1, color2, color3, color4;
 
 	//Päälooppi
 	while (isRunning)
@@ -181,7 +179,16 @@ void Engine::run()
 					s->setRotation(s->getRotation() - 3.5f);
 					break;
 
-				//Ohjelma lopetetaan
+				//Vaihdetaan neliön väriä
+				case SDLK_SPACE:
+					color1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+					color2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+					color3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+					color4 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+					s5->setColor(glm::vec4(color1, color2, color3, 1));
+					break;
+
+					//Ohjelma lopetetaan
 				case SDLK_ESCAPE:
 					SDL_QUIT;
 					SDL_DestroyWindow(window);
